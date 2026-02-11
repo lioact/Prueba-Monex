@@ -173,11 +173,8 @@ El cliente B presenta mayor riesgo debido a un score de crédito 40% menor, ante
 1. **Inflación:** Variable macro con impacto significativo (coef. 0.060)
 2. **Tasa de interés (rate):** Mayor driver del modelo (coef. 0.166)
 3. **Bureau score de aprobados:** Estabilidad de la distribución
-4. **PSI (Population Stability Index):** De las 7 variables del modelo
-5. **Tasas de incumplimiento por cosecha:** Detección temprana de deterioro
-6. **Distribución de scores:** En nuevas originaciones vs entrenamiento
-7. **Tasas de aprobación y rechazo:** Por producto/canal/región
-8. **Performance de deciles:** Validar que el ordenamiento se mantiene
+4. **Tasas de aprobación y rechazo:** Por producto/canal/región
+5. **Performance de deciles:** Validar que el ordenamiento se mantiene
 
 #### d. ¿Qué te preocuparía en 6-12 meses?
 
