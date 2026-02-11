@@ -135,12 +135,16 @@ El modelo sigue siendo útil porque el impacto es consistente en todos los decil
 ### Uso de LLMs en el Proyecto
 
 Para este trabajo se hizo uso de Copilot como autocompletado dentro de PyCharm y se hizo uso de ChatGPT para la generación de gráficos y los modelos de boosting. El prompt se perdió ya que más que un prompt estructurado eran preguntas puntuales al LLM, pero principalmente fue el generar gráficos que pudieran explicar los resultados de los modelos que se muestran en los notebooks.
-
+- Los prompts fueron principalmente **preguntas puntuales al LLM** en lugar de prompts estructurados
+- **Uso principal:** Generación de visualizaciones que expliquen los resultados de los modelos
+- **Ejemplo de consultas:**
+  - "Genera un gráfico que muestre la distribución de PD por deciles"
+  - "Crea un plot comparativo del desempeño de Random Forest vs XGBoost"
+  - "Visualiza el análisis de cosechas mostrando default rate por vintage"
+  - "Ayuda con la implementación de XGBoost para clasificación binaria"
 ## Contacto
 
-[Tu nombre]  
-[Tu correo]
 
+Leonardo Rosas - actleorosas@gmail.com
 ---
 
-**Nota:** Este README contiene las respuestas completas a las tareas solicitadas. Los resultados numéricos corresponden a los análisis ejecutados sobre el portafolio proporcionado.
