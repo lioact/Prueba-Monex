@@ -24,7 +24,8 @@ pdm install
 
 ### 1. Modelo de Incumplimiento a 12 Meses - Originación
 
-Se desarrolló un modelo de Regresión Logística utilizando un conjunto reducido de 7 variables clave. Este modelo fue seleccionado por su estabilidad y facilidad de explicación en procesos de originación.
+Se desarrolló un modelo de Regresión Logística utilizando un conjunto reducido de 7 variables a las que se llegaron gracias 
+a los p-values generados por el modelo. Este modelo fue seleccionado por su estabilidad y facilidad de explicación en procesos de originación.
 
 **Métricas de desempeño:**
 - AUC: 0.6361
