@@ -47,7 +47,7 @@ pdm install
 
 **Modelos Evaluados:**
 
-1. Regresión Logística (Logit): AUC 0.635, Gini 0.270 - Modelo base
+1. Regresión Logística (Logit): AUC 0.62, Gini 0.270 - Modelo base
 2. Logit Balanced (SELECCIONADO): AUC 0.636, Gini 0.272, KS 0.210
    - Ofrece la mayor estabilidad para el seguimiento de la Probabilidad de Default continua
 3. Random Forest: AUC 0.618 - Desempeño ligeramente inferior en ordenamiento
