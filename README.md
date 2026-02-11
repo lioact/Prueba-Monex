@@ -2,7 +2,7 @@
 
 Proyecto de modelado de riesgo crediticio para evaluar incumplimiento a 12 meses en originación y seguimiento de clientes.
 
-## 🚀 Ejecución Rápida
+## Ejecución Rápida
 
 ### Prerrequisitos
 - Python 3.12
@@ -22,7 +22,7 @@ pdm install
 ```
 
 
-## 📝 Respuestas a las Tareas
+## Respuestas a las Tareas
 
 ### 1. Modelo de Incumplimiento a 12 Meses - Originación
 
@@ -33,11 +33,11 @@ pdm install
 - Target: incumplimiento a 90+ días en los próximos 12 meses
 - Seleccionado por estabilidad y facilidad de explicación en procesos de originación
 
-**Resultado:**
+**Métricas de desempeño:**
 - AUC: 0.6361
 - Gini: 0.2721
 - KS: 0.2101
-- **Umbral de decisión:** 0.64 para clasificación y aprobación
+- Umbral de decisión: 0.64 para clasificación y aprobación
 
 ### 2. Modelo de Incumplimiento a 12 Meses - Seguimiento
 
@@ -47,11 +47,11 @@ pdm install
 
 **Modelos Evaluados:**
 
-1. **Regresión Logística (Logit):** AUC 0.635, Gini 0.270 - Modelo base
-2. **Logit Balanced (SELECCIONADO):** AUC 0.636, Gini 0.272, KS 0.210
-   - Ofrece la mayor estabilidad para el seguimiento de la Probabilidad de Default (PD) continua
-3. **Random Forest:** AUC 0.618 - Desempeño ligeramente inferior en ordenamiento
-4. **XGBoost:** AUC 0.588 - Menor capacidad predictiva que modelos lineales en este dataset
+1. Regresión Logística (Logit): AUC 0.635, Gini 0.270 - Modelo base
+2. Logit Balanced (SELECCIONADO): AUC 0.636, Gini 0.272, KS 0.210
+   - Ofrece la mayor estabilidad para el seguimiento de la Probabilidad de Default continua
+3. Random Forest: AUC 0.618 - Desempeño ligeramente inferior en ordenamiento
+4. XGBoost: AUC 0.588 - Menor capacidad predictiva que modelos lineales en este dataset
 
 **Modelo Seleccionado:** Logit Balanced por su equilibrio entre desempeño y estabilidad para gestión integral del riesgo.
 
@@ -60,24 +60,24 @@ pdm install
 **Principales hallazgos:**
 
 **Universo de clientes y tendencia:**
-- **Incremento progresivo de morosidad:** De 4.1% en 2022 a 7.2% en 2024
+- Incremento progresivo de morosidad: De 4.1% en 2022 a 7.2% en 2024
 - La PD promedio aumenta en línea con el deterioro observado
 - Deterioro coincide con cambios en el entorno macroeconómico
 
 **Variables macroeconómicas:**
-- **Inflación y tasa de interés (rate):** Muestran correlación positiva con incumplimiento
+- Inflación y tasa de interés (rate) muestran correlación positiva con incumplimiento
 - Periodos recientes con mayores tasas presentan mayor riesgo
 - El entorno macro explica parte del deterioro en cosechas recientes
 
 **Correlaciones con incumplimiento (Top 3):**
-1. **bureau_score**: Correlación negativa fuerte - A menor score, mayor riesgo de incumplimiento
-2. **rate (Tasa de interés)**: Correlación positiva - Mayores tasas aumentan probabilidad de impago
-3. **prev_delin_24m**: Correlación positiva - Antecedentes de morosidad predicen comportamiento futuro
+1. bureau_score: Correlación negativa fuerte - A menor score, mayor riesgo de incumplimiento
+2. rate (Tasa de interés): Correlación positiva - Mayores tasas aumentan probabilidad de impago
+3. prev_delin_24m: Correlación positiva - Antecedentes de morosidad predicen comportamiento futuro
 
 ### 4. Análisis de Cosechas (Vintage Analysis)
 
 **Observaciones:**
-- **Deterioro progresivo en la calidad de la cartera**
+- Deterioro progresivo en la calidad de la cartera
 - Las cosechas más recientes muestran mayor tasa de incumplimiento
 
 **Comparación de cosechas:**
@@ -89,13 +89,11 @@ pdm install
 | 2024-01   | 7.28%        | 0.57        | Reciente       |
 
 **Desempeño del modelo:**
-- El modelo **captura adecuadamente la tendencia de deterioro**
-- La PD promedio se incrementa de 0.44 a 0.57 conforme el entorno se vuelve más riesgoso
-- Modelo consistente en diferentes cosechas
+El modelo captura adecuadamente la tendencia de deterioro. La PD promedio se incrementa de 0.44 a 0.57 conforme el entorno se vuelve más riesgoso. El modelo es consistente en diferentes cosechas.
 
 **Factores explicativos de las diferencias:**
-- **Incremento en inflación** durante periodos recientes
-- **Aumento en tasas de interés** impacta capacidad de pago
+- Incremento en inflación durante periodos recientes
+- Aumento en tasas de interés impacta capacidad de pago
 - Deterioro del entorno macroeconómico en cosechas 2023-2024
 - El modelo refleja correctamente estos cambios en sus predicciones
 
@@ -103,7 +101,7 @@ pdm install
 
 #### a-b. Percentiles de PD (Deciles)
 
-La base fue dividida en **deciles (0 al 9)** para análisis de riesgo:
+La base fue dividida en deciles (0 al 9) para análisis de riesgo:
 
 | Decil | PD Promedio | Default Real | Monto Total | Pérdida Esperada |
 |-------|-------------|--------------|-------------|------------------|
@@ -114,14 +112,11 @@ La base fue dividida en **deciles (0 al 9)** para análisis de riesgo:
 | 8                | ~65%   | ~10%   | -       | -       |
 | 9 (Alto Riesgo)  | 71.31% | 11.88% | $125.7M | $89.6M  |
 
-**Observaciones clave:**
-- Clara separación entre deciles de riesgo
-- El decil más alto (9) tiene PD 2.5x mayor que el más bajo (0)
-- La pérdida esperada se concentra en deciles superiores
+Observaciones: Clara separación entre deciles de riesgo. El decil más alto tiene una PD 2.5 veces mayor que el más bajo. La pérdida esperada se concentra en deciles superiores.
 
 #### c. Top 5 Variables Explicativas
 
-Variables ordenadas por **coeficiente del modelo** (impacto en log-odds):
+Variables ordenadas por coeficiente del modelo:
 
 1. **rate (Tasa de interés)** (0.166): Mayores tasas incrementan significativamente el riesgo
 2. **prev_delin_24m** (0.126): Historial de morosidad es predictor fuerte
@@ -129,33 +124,27 @@ Variables ordenadas por **coeficiente del modelo** (impacto en log-odds):
 4. **utilization** (0.114): Alta utilización de líneas indica estrés financiero
 5. **inflación** (0.060): Presión inflacionaria afecta capacidad de pago
 
-**Relación con PD:**
-- Todas las variables tienen relación **positiva** con PD
-- bureau_score (no mostrado en coeficientes pero clave) tiene relación **inversa**
+Todas las variables tienen relación positiva con la probabilidad de incumplimiento. Bureau score, aunque no se muestra en la tabla de coeficientes, tiene relación inversa (a menor score, mayor riesgo).
 
 #### d. Casos Individuales Comparados
 
 **Cliente A (Bajo Riesgo - Decil 0)**
-- **bureau_score:** 850
-- **debt_income:** Baja (~20-30%)
-- **prev_delin_24m:** 0
-- **utilization:** Baja
-- **PD estimada:** ~28%
-- **Perfil:** Score excelente, sin historial de mora, bajo apalancamiento
+- bureau_score: 850
+- debt_income: Baja (~20-30%)
+- prev_delin_24m: 0
+- utilization: Baja
+- PD estimada: ~28%
+- Perfil: Score excelente, sin historial de mora, bajo apalancamiento
 
 **Cliente B (Alto Riesgo - Decil 9)**
-- **bureau_score:** 512-560
-- **debt_income:** Alta (>50%)
-- **prev_delin_24m:** 2-3 eventos
-- **utilization:** Alta (>70%)
-- **PD estimada:** ~71%
-- **Perfil:** Score deficiente, historial de impago, alto uso de crédito
+- bureau_score: 512-560
+- debt_income: Alta (>50%)
+- prev_delin_24m: 2-3 eventos
+- utilization: Alta (>70%)
+- PD estimada: ~71%
+- Perfil: Score deficiente, historial de impago, alto uso de crédito
 
-**¿Por qué Cliente B es más riesgoso?**
-- Score de crédito 40% menor
-- Tiene antecedentes de morosidad
-- Mayor apalancamiento (DTI alto)
-- Utiliza casi toda su capacidad crediticia (señal de estrés financiero)
+El cliente B presenta mayor riesgo debido a un score de crédito 40% menor, antecedentes de morosidad, mayor apalancamiento y utilización casi completa de su capacidad crediticia.
 
 ### 6. Modelo de Originación - Evaluación Práctica
 
@@ -232,8 +221,8 @@ PD_final = min(PD_adverso, 1.0)  # Topado en 100%
 
 | Escenario | Pérdida Esperada Total | Incremento vs Base |
 |-----------|------------------------|-------------------|
-| **Base**    | **$625.8 millones**    | -                 |
-| **Adverso** | **$782.0 millones**    | **+$156.2M (+24.96%)** |
+| Base      | $625.8 millones        | -                 |
+| Adverso   | $782.0 millones        | +$156.2M (+24.96%) |
 
 **Impacto por Decil:**
 - El incremento es **consistente (~25%) en todos los deciles**
@@ -247,21 +236,21 @@ PD_final = min(PD_adverso, 1.0)  # Topado en 100%
 
 #### d. ¿El modelo sigue siendo útil?
 
-**Respuesta:** **Sí, el modelo mantiene su utilidad bajo estrés**
+**Respuesta:** Sí, el modelo mantiene su utilidad bajo estrés
 
 **Análisis de robustez:**
 
-✅ **Capacidad discriminatoria:** 
-- El impacto es **proporcional en todos los deciles** (~25%)
+**Capacidad discriminatoria:** 
+- El impacto es proporcional en todos los deciles (~25%)
 - El ordenamiento de riesgo se mantiene intacto
 - Decil 9 sigue siendo 2.5x más riesgoso que decil 0
 
-✅ **Estabilidad estructural:**
+**Estabilidad estructural:**
 - Los coeficientes del modelo siguen siendo relevantes
 - Variables macro capturan adecuadamente el estrés
 - No hay colapso de la capacidad predictiva
 
-⚠️ **Limitaciones identificadas:**
+**Limitaciones identificadas:**
 
 1. **Calibración:** Las PDs absolutas pueden requerir ajuste
 2. **Linealidad:** Asume impacto proporcional (puede no ser cierto en crisis extrema)
@@ -269,41 +258,47 @@ PD_final = min(PD_adverso, 1.0)  # Topado en 100%
 4. **Techo de PD:** Algunos segmentos ya cerca de 100%
 
 **Recomendaciones:**
-- ✓ Útil para **ordenamiento y priorización** de riesgo
-- ✓ Mantener para **seguimiento relativo** entre segmentos
-- ⚠️ Recalibrar PDs absolutas si el estrés persiste >6 meses
-- ⚠️ Complementar con análisis cualitativo en escenarios extremos
-- ⚠️ Monitorear nuevas variables (empleo, movilidad) en crisis profundas
+- Útil para ordenamiento y priorización de riesgo
+- Mantener para seguimiento relativo entre segmentos
+- Recalibrar PDs absolutas si el estrés persiste más de 6 meses
+- Complementar con análisis cualitativo en escenarios extremos
+- Monitorear nuevas variables (empleo, movilidad) en crisis profundas
 
-## 🔍 Notas Metodológicas
+## Notas Metodológicas
 
-- **Definición de incumplimiento:** 90+ días de mora (dpd_bucket = 90+)
-- **Ventana de observación:** 12 meses posteriores a originación
-- **Variables del modelo reducido:** 7 variables clave seleccionadas por estabilidad
+- Definición de incumplimiento: 90+ días de mora (dpd_bucket = 90+)
+- Ventana de observación: 12 meses posteriores a originación
+- Variables del modelo reducido: 7 variables clave seleccionadas por estabilidad
 
 ### Uso de LLMs en el Proyecto
 
 **Herramientas utilizadas:**
-1. **GitHub Copilot:** Autocompletado de código dentro de PyCharm
-2. **ChatGPT:** Generación de gráficos y modelos de boosting
+1. GitHub Copilot: Autocompletado de código dentro de PyCharm
+2. ChatGPT: Generación de gráficos y modelos de boosting
 
-**Prompts y razonamiento:**
-- Los prompts fueron principalmente **preguntas puntuales al LLM** en lugar de prompts estructurados
-- **Uso principal:** Generación de visualizaciones que expliquen los resultados de los modelos
-- **Ejemplo de consultas:**
-  - "Genera un gráfico que muestre la distribución de PD por deciles"
-  - "Crea un plot comparativo del desempeño de Random Forest vs XGBoost"
-  - "Visualiza el análisis de cosechas mostrando default rate por vintage"
-  - "Ayuda con la implementación de XGBoost para clasificación binaria"
+**Descripción del uso:**
+Los prompts utilizados fueron principalmente preguntas puntuales al LLM en lugar de prompts estructurados. El uso principal fue la generación de visualizaciones para explicar los resultados de los modelos.
 
-**Nota:** Los prompts específicos se perdieron durante el desarrollo, pero el patrón fue iterativo: consulta → código generado → ajuste manual → validación de resultados.
+Ejemplos de consultas realizadas:
+- Generación de gráficos mostrando distribución de PD por deciles
+- Creación de plots comparativos del desempeño entre Random Forest y XGBoost
+- Visualización del análisis de cosechas mostrando default rate por vintage
+- Implementación de XGBoost para clasificación binaria
 
+Nota: Los prompts específicos no fueron almacenados durante el desarrollo. El patrón de trabajo fue iterativo: consulta, código generado, ajuste manual y validación de resultados.
 
+## Próximos Pasos
 
-## 📧 Contacto
+1. Calibración trimestral del modelo
+2. Incorporar variables alternativas (bureau extendido, comportamiento transaccional)
+3. Desarrollar modelos especializados por producto
+4. Implementar monitoreo automático de PSI
 
-Leonardo Rosas
-actleorosas@gmail.com
+## Contacto
+
+[Tu nombre]  
+[Tu correo]
 
 ---
 
+**Nota:** Este README contiene las respuestas completas a las tareas solicitadas. Los resultados numéricos corresponden a los análisis ejecutados sobre el portafolio proporcionado.
